@@ -1,13 +1,11 @@
 **Superheroes Base**
 
-- Superheroes app - this web application developed to be able to create your own base of heroes.
-  This version 0.0.1 allow to check all your heroes' base and create a new hero. Next version will include next features:
+**Superheroes app** - this web application developed to be able to create your own base of heroes.
+This version 0.0.1 allow to check all your heroes' base and create a new hero. Next version will include next features:
 
-* registration/ authorization
-* the Hero card where you can have all details
-* update hero's data.
-
--
+- registration/ authorization
+- the Hero card where you can have all details
+- update hero's data.
 
 **You can be a Hero for your country as well!!!**
 
