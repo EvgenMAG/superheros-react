@@ -1,0 +1,29 @@
+.deleteBtn {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  border: none;
+  max-width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+.deleteBtn:hover {
+  transform: scale(1.2);
+}
+
+.deleteImg {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  border: none;
+  max-width: 30px;
+  height: 30px;
+  background-color: transparent;
+
+  max-width: 30px;
+  height: 30px;
+}
+
+.deleteImg:hover {
+  transform: scale(1.2);
+}
