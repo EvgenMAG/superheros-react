@@ -62,6 +62,9 @@ export default function HeroesPage() {
                                     to={{
                                         pathname: `${item._id}`,
                                     }}
+                                    state={{
+                                        pageId: page
+                                    }}
                                 >
                                     <HeroCard
                                         path={item.images[0] ? item.images[0].image : poster}

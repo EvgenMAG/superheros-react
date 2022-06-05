@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import Modal from '../Components/Modal/Modal';
 import ModalForm from '../Components/ModalForm/ModalForm'
 import Loader from '../Components/Loading/Loader'
@@ -14,10 +14,13 @@ import poster from '../img/MAKS.jpg';
 export default function HeroDEtailsPage() {
     let params = useParams()
     let navigate = useNavigate()
+    const location = useLocation()
+    const { pageId } = location.state
     const [hero, setHero] = useState('')
     const [showModal, setShowModal] = useState(false)
+    const [page, setPage] = useState(0)
 
-    console.log(params)
+    console.log(pageId)
 
     useEffect(() => {
         apiFetch.getHero(params.heroId).then(({ data }) => {
@@ -31,7 +34,7 @@ export default function HeroDEtailsPage() {
         navigate("/", { replace: true })
     };
 
-    const hadleClick = (id) => {
+    const hadleImage = (id) => {
         apiFetch.deleteHeroImage(hero._id, id).then(({ data }) => {
             setHero(data.contact)
         })
@@ -132,7 +135,7 @@ export default function HeroDEtailsPage() {
                                     src={item.image}
                                     alt={hero.nickname}
                                 />
-                                <img className={s.deleteImg} alt="" src={basket} onClick={() => hadleClick(item._id)} />
+                                <img className={s.deleteImg} alt="" src={basket} onClick={() => hadleImage(item._id)} />
                             </div>
                         )}
 
