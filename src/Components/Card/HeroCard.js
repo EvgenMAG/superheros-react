@@ -4,10 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import basket from '../../img/basket3.png'
-import s from './HeroCard.module.css';
 
-export default function HeroCard({ path, descr, handleDelete, id }) {
+
+export default function HeroCard({ path, descr }) {
 
     return (
 
@@ -41,10 +40,9 @@ export default function HeroCard({ path, descr, handleDelete, id }) {
                         {descr}
                     </Typography>
 
-                    <img className={s.deleteImg} alt="" src={basket} onClick={() => handleDelete(id)} />
-
                 </CardContent>
             </CardActionArea>
+
         </Card>
 
     );

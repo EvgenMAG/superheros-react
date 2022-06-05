@@ -3,34 +3,35 @@ import React, { useEffect, useState } from 'react';
 import Paginator from '../Components/Pagination/pagination'
 import apiFetch from '../api-service/Api-service'
 import HeroCard from '../Components/Card/HeroCard';
+import { NavLink } from "react-router-dom";
 
 import Loading from '../Components/Loading/Loader'
 
+
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import poster from '../img/MAKS.jpg';
 
 
-export default function HomePage() {
+export default function HeroesPage() {
     const [heroes, setHeroes] = useState()
-    const [hero, setHero] = useState('')
+    const [page, setPage] = useState(0)
+
 
     useEffect(() => {
-        apiFetch.getListHeroes().then(({ data }) => {
+        apiFetch.getListHeroes(page).then(({ data }) => {
             setHeroes(data)
         })
 
-    }, [hero])
+    }, [])
 
     const onChangePage = (page) => {
         apiFetch.getListHeroes(page).then(({ data }) => {
             setHeroes(data)
+            setPage(page)
         })
     }
-    const handleDelete = (hero) => {
-        apiFetch.deleteHero(hero)
-        setHero(hero)
 
-    }
 
     return (
         <>
@@ -57,12 +58,17 @@ export default function HomePage() {
                         {heroes.docs.map(item =>
 
                             <Grid key={item._id} item xs={2.4}>
-                                <HeroCard
-                                    path={item.images[0].image}
-                                    descr={item.nickname}
-                                    handleDelete={handleDelete}
-                                    id={item._id}
-                                />
+                                <NavLink
+                                    to={{
+                                        pathname: `${item._id}`,
+                                    }}
+                                >
+                                    <HeroCard
+                                        path={item.images[0] ? item.images[0].image : poster}
+                                        descr={item.nickname}
+                                    />
+                                </NavLink>
+
                             </Grid>
                         )}
                     </Grid>

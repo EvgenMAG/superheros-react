@@ -1,13 +1,17 @@
 
 import React from 'react';
-import HeroesFrom from '../Components/CreationForm/CreationForm'
+import HeroForm from '../Components/HeroForm/HeroForm'
 
 
-export default function HomePage() {
+
+export default function CreationPage() {
+
+
+
 
     return (
         <>
-            <HeroesFrom />
+            <HeroForm />
         </>
     )
 }

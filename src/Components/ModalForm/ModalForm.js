@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import s from './CreationForm.module.css';
+import React, { useState, useEffect } from 'react';
+import s from './ModalForm.module.css';
 import TextArea from '../TextField/TextField'
 import InputField from '../InputField/InputField'
 import InputFile from '../InputFile/InputFile'
@@ -7,13 +7,24 @@ import Button from '@mui/material/Button';
 
 import apiFetch from '../../api-service/Api-service'
 
-export default function HeroesFrom() {
+export default function HeroForm(props) {
+    const { handleEdits, onClose, hero } = props
     const [nickname, setNickname] = useState('')
     const [realName, setRealName] = useState('')
     const [description, setDescription] = useState('')
     const [superpower, setSuperpower] = useState('')
     const [slogan, setSlogan] = useState('')
     const [images, setImages] = useState([])
+
+
+    useEffect(() => {
+        setNickname(props.hero.nickname)
+        setRealName(props.hero.real_name)
+        setDescription(props.hero.origin_description)
+        setSuperpower(props.hero.superpowers)
+        setSlogan(props.hero.catch_phrase)
+
+    }, [])
 
 
 
@@ -65,7 +76,9 @@ export default function HeroesFrom() {
         for (let i = 0; i < images.length; i++) {
             formData.append("images", images[i])
         }
-        apiFetch.createHeroes(formData)
+
+        apiFetch.updateHero(hero._id, formData).then(result => handleEdits(result.data))
+        onClose()
         reset()
     }
 
@@ -78,11 +91,6 @@ export default function HeroesFrom() {
         setImages([])
 
     };
-
-    let disable = true;
-    if (nickname && realName && description && superpower && slogan && images.length !== 0) {
-        disable = false;
-    }
 
     return (
         <form onSubmit={handleSubmit} className={s.form} encType="multipart/form-data">
@@ -131,7 +139,7 @@ export default function HeroesFrom() {
                     fontWeight: "bold",
                 }}
                 variant="outlined"
-                disabled={disable}
+
                 type="submit"
             >Create</Button>
         </form>

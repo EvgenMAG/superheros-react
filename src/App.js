@@ -10,10 +10,11 @@ import './App.css';
 
 import routes from './routes';
 
-const HeroesPage = lazy(() => import('./views/HeroesPage'));
-// const HeroDetails = lazy(() => import('./views/HeroDetails')
-// );
-const CreationPage = lazy(() => import('./views/CreationPage'));
+const HeroesPage = lazy(() => import('./views/HeroesPage' /* webpackChunkName: "HeroesPage-view" */));
+
+const CreationPage = lazy(() => import('./views/CreationPage' /* webpackChunkName: "CreationPage-view" */));
+const HeroDetailsPage = lazy(() => import('./views/HeroDetailsPage' /* webpackChunkName: "HeroDetailsPage-view" */));
+
 
 export default function App() {
 
@@ -31,6 +32,7 @@ export default function App() {
         >
           <Routes>
             <Route path={routes.home} element={<HeroesPage />} />
+            <Route path={routes.heroDetails} element={<HeroDetailsPage />} />
             <Route path={routes.creatHero} element={<CreationPage />} />
           </Routes>
 

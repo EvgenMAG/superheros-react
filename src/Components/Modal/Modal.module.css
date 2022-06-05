@@ -1,0 +1,34 @@
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+  overflow-y: scroll;
+}
+
+.Modal {
+  position: relative;
+  background-color: aliceblue;
+  padding: 20px 40px 20px 40px;
+  max-width: 800px;
+  max-height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.closeModalBtn {
+  position: absolute;
+  background-color: yellowgreen;
+  /* color: aliceblue; */
+  top: 2px;
+  right: 2px;
+  padding: 8px 11px;
+  border-radius: 50%;
+  outline: none;
+}
